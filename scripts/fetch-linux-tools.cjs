@@ -1,0 +1,8 @@
+const fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypto'),{execFileSync}=require('node:child_process');
+const base=path.resolve(__dirname,'../.growth-atlas-build/tools');fs.mkdirSync(base,{recursive:true});
+function get(url){return execFileSync('curl.exe',['--fail','--location','--retry','2','--silent','--show-error',url],{maxBuffer:8*1024*1024,timeout:120000}).toString()}
+function file(url,name,digest){const out=path.join(base,name);if(!fs.existsSync(out))execFileSync('curl.exe',['--fail','--location','--retry','2','--silent','--show-error','--output',out,url],{timeout:600000});const sha=crypto.createHash('sha256').update(fs.readFileSync(out)).digest('hex');if(digest&&sha!==digest.replace('sha256:',''))throw Error('Checksum mismatch '+name);console.log(name+' '+sha);return{url,file:name,sha256:sha,upstreamDigest:!!digest}}
+const electron=JSON.parse(get('https://api.github.com/repos/electron/electron/releases/tags/v44.9.0')).assets.find(a=>a.name==='electron-v44.9.0-linux-x64.zip');if(!electron)throw Error('Official Electron asset missing');
+const runtime=JSON.parse(get('https://api.github.com/repos/AppImage/type2-runtime/releases/tags/20251108')).assets.find(a=>a.name==='runtime-x86_64');if(!runtime)throw Error('Official AppImage runtime missing');
+const receipts=[file(electron.browser_download_url,electron.name,electron.digest),file(runtime.browser_download_url,'appimage-runtime-x86_64',runtime.digest),file('https://infraroot.at/pub/squashfs/windows/squashfs-tools-ng-1.3.2-mingw64.zip','squashfs-tools-ng-1.3.2-mingw64.zip')];
+fs.writeFileSync(path.join(base,'download-receipts.json'),JSON.stringify(receipts,null,2));

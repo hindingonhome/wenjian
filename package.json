@@ -1,0 +1,21 @@
+{
+  "name": "wenjian",
+  "productName": "纹间",
+  "version": "1.2.1",
+  "description": "离线自然生长算法实验、首饰概念与文献档案",
+  "private": true,
+  "license": "UNLICENSED",
+  "author": "纹间",
+  "main": "desktop/main.cjs",
+  "scripts": {
+    "test": "node --test tests/*.test.cjs",
+    "build": "node scripts/build-thumbnails.cjs && node scripts/prepare-desktop.cjs",
+    "desktop": "electron .",
+    "package:windows": "electron-builder --config desktop/electron-builder.cjs --win --x64 --publish never",
+    "package:linux": "electron-builder --config desktop/electron-builder.cjs --linux --x64 --publish never"
+  },
+  "devDependencies": {
+    "electron": "44.9.0",
+    "electron-builder": "26.15.3"
+  }
+}

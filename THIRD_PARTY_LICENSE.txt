@@ -1,0 +1,8 @@
+纹间第三方声明
+
+Electron 44.9.0 及 Chromium：许可随平台包 Licenses 提供。
+源泉圆体 GenSen Rounded 与 Noto Sans SC：SIL OFL 1.1，可商业嵌入，保留版权及许可，详见 assets/fonts 与 docs/FONTS.md。
+Linux AppImage 运行时：许可见 docs/licenses；系统组件遵从其各自许可。
+十项算法依据与延伸研究列于应用文献目录。论文引用不表示论文作者参与或认可本产品，论文原文权利属于各权利人。
+AI首饰概念图为研究机制启发的预生成图像，不代表论文直接输出、真实样品或可打印模型；具体来源记录见 docs/ai-concept-provenance.md。
+项目专有许可不限制上述独立第三方许可已授予的权利。

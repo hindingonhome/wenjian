@@ -1,0 +1,404 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <meta name="application-name" content="纹间">
+  <link rel="icon" type="image/svg+xml" href="assets/brand-mark.svg">
+  <title>纹间 · WenJian</title>
+  <link rel="stylesheet" href="styles/atlas.css">
+  <link rel="stylesheet" href="styles/glass.css">
+  <link rel="stylesheet" href="styles/product.css">
+</head>
+<body>
+  <header id="site-header" class="site-header" title="点击空白区域返回顶部"><div class="shell topbar" id="topbar-inner">
+    <a class="brand" href="#top" aria-label="纹间首页"><span class="brand-mark" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor" aria-hidden="true"><path transform="translate(16.79775 214.04710) scale(0.2234707 -0.2234707)" d="M221 13C262 26 303 40 345 53C373 62 384 83 379 112C373 146 352 160 319 150C277 138 235 126 194 115C159 105 126 96 96 88C60 79 51 59 58 23C66 -17 86 -31 125 -18C156 -8 188 3 221 13ZM214 210 326 232C357 238 373 254 374 285C376 327 356 341 315 334L226 319C285 394 342 479 388 562V559C388 553 392 549 398 549H451C484 394 530 264 601 160C553 114 496 77 428 48C377 29 354 2 387 -42C410 -73 442 -76 478 -61C555 -26 620 17 675 69C724 20 780 -20 847 -52C883 -67 912 -65 935 -34C969 12 950 40 897 61C843 87 796 121 756 161C827 262 873 389 903 549H905C944 549 963 569 963 608C963 647 944 666 905 666H709L712 667C744 681 755 710 742 736C728 762 711 789 694 814C677 838 653 846 625 835C586 819 578 793 601 758C620 727 638 694 649 666H519H429C404 666 388 650 388 625V577L344 605C319 620 293 613 280 586C271 570 262 553 253 537L171 531C216 597 258 675 292 752C307 788 299 813 263 830C222 849 196 836 182 793C148 696 98 597 58 518H56C34 515 28 494 35 473C44 446 67 423 95 426L192 437C158 387 129 348 84 292H82C47 285 34 263 44 228C53 196 73 183 105 189ZM612 392C593 441 578 494 565 549H673H781C761 432 729 336 679 257C653 298 630 343 612 392Z"/></svg></span><span>纹间 <small>WENJIAN</small></span></a>
+    <div class="header-tools"><nav class="nav" aria-label="主要导航"><details id="algorithm-menu" class="algorithm-menu"><summary id="algorithm-menu-trigger" aria-controls="algorithm-menu-panel"><span>算法</span><strong id="nav-algorithm-name">空间殖民</strong><span class="menu-cue" aria-hidden="true">+</span></summary><div id="algorithm-menu-panel" class="algorithm-menu-panel"><div class="algorithm-menu-inner"><div class="menu-heading"><span>选择生长机制</span><span>10 项研究</span></div><div id="algorithm-menu-grid" class="algorithm-menu-grid"></div></div></div></details><a href="#case">作品案例</a><a href="#archive">算法档案</a><a href="#references">文献来源</a></nav><button id="theme-toggle" class="theme-toggle" type="button" aria-label="切换到深色主题" aria-pressed="false" title="切换到深色主题"><span class="theme-symbol" aria-hidden="true"></span></button></div>
+  </div></header>
+  <div id="algorithm-menu-scrim" class="algorithm-menu-scrim" hidden></div>
+  <main id="top" class="shell">
+
+    <section id="laboratory" aria-labelledby="lab-title">
+      <div class="workbench">
+        <aside id="history-drawer" class="history-rail scene-panel" aria-label="历史生成结果" hidden><div class="panel-heading"><h3>生成历史 <span id="history-count" class="history-count">0 / 5</span></h3><button type="button" data-close-panel="history-drawer">关闭</button></div><p class="history-sub">点击缩略图载入该版本</p><div id="history-list" class="history-list"><p class="history-empty">此算法暂无历史图</p></div></aside>
+        <div class="stage"><div class="stage-top"><h1 id="lab-title" class="stage-title">空间殖民</h1><span><i class="live-dot"></i><strong id="run-status">正在生长</strong></span><select id="study-select" class="study-select" aria-label="选择生长算法" hidden></select><div class="stage-tools"><button type="button" id="history-toggle" aria-controls="history-drawer" aria-expanded="false">历史 <span id="history-toggle-count">0 / 5</span></button><button type="button" id="parameters-toggle" aria-controls="live-controls" aria-expanded="false">调节参数</button></div></div><div id="canvas-area" class="canvas-wrap"><canvas id="growth-canvas" width="900" height="600" aria-label="当前算法生长画布"></canvas></div><div class="canvas-actions"><div class="button-row"><button id="play-button" class="primary" type="button">暂停生长</button><button id="step-button" type="button">单步推进</button><button id="seed-button" type="button">新形态</button><button id="save-button" class="save-button" type="button">保存版本</button><details class="action-menu"><summary>导出图片</summary><div class="menu-panel"><button id="export-button" type="button">算法画布 PNG</button><button id="export-concept-copy" type="button">当前首饰视角 JPG</button></div></details></div></div><div class="section-head lab-head"><div><div class="eyebrow">01 / Growth laboratory</div><p id="lab-description" class="lab-description">在预设树冠空间放置吸引点，枝梢汇总附近点的方向后延伸，接近的点随之移除。点分布、作用距离和移除阈值会改变分枝结构。</p><div id="lab-materials" class="lab-materials" aria-label="当前算法研究材料"></div></div></div><div id="growth-stats" class="stage-bottom"><span>迭代 <b id="stat-iteration">0</b></span><span id="stat-count-label">结构单元 <b id="stat-nodes">1</b></span><span id="stat-extra-label"><span id="stat-extra-title">剩余点 </span><b id="stat-points">0</b></span><span>随机种子 <b id="stat-seed">73</b></span></div></div>
+        <div id="live-controls" class="controls scene-panel" role="region" aria-label="调节生长参数" hidden><div><div class="eyebrow">Parameters</div><div class="panel-heading"><h3>调节生长条件</h3><button type="button" data-close-panel="live-controls">关闭</button></div><p class="control-intro">拖动滑块即以同一随机种子重算，可直接比较形态变化。</p></div>
+          <div class="control"><span class="control-top"><span id="density-label">吸引点密度</span><input id="count-value" class="parameter-number" type="number" min="1" max="100" step="1" value="55" data-range="point-count" aria-label="参数数值"></span><input id="point-count" type="range" min="1" max="100" step="1" value="55"></div>
+          <div class="control"><span class="control-top"><span id="spread-label">感应范围</span><input id="influence-value" class="parameter-number" type="number" min="1" max="100" step="1" value="55" data-range="influence" aria-label="参数数值"></span><input id="influence" type="range" min="1" max="100" step="1" value="55"></div>
+          <div class="control"><span class="control-top"><span id="detail-label">消除距离</span><input id="kill-value" class="parameter-number" type="number" min="1" max="100" step="1" value="55" data-range="kill" aria-label="参数数值"></span><input id="kill" type="range" min="1" max="100" step="1" value="55"></div>
+          <div class="control"><span class="control-top"><span id="speed-label">播放速度</span><input id="speed-value" class="parameter-number" type="number" min="1" max="8" step="1" value="3" data-range="speed" aria-label="参数数值"></span><input id="speed" type="range" min="1" max="8" step="1" value="3"></div>
+          <div class="panel-reset"><button id="reset-button" type="button">重置当前算法</button></div>
+          <div class="seed-row"><input id="seed-input" type="number" min="1" max="999999" value="73" aria-label="随机种子"><button id="apply-seed" type="button">应用种子</button></div>
+          <details class="parameter-evidence"><summary>研究依据与演示说明</summary><p class="control-foot">方法依据：<a id="current-source" href="https://diglib.eg.org/items/b5d756ee-0ab3-436e-a5cb-617d50df78fb" target="_blank" rel="noopener noreferrer">查看对应研究</a><br><span id="method-caveat">交互图为教育性机制转译。导出图片不含可打印三维网格。</span></p></details>
+        </div>
+      </div>
+    </section>
+    <section id="case" class="case-section" aria-labelledby="case-title"><div class="section-head"><div><div class="eyebrow">02 / Metal concept</div><h2>机制的立体转译</h2></div><p class="section-note">生长实验展示可交互规则；此处展示由对应机制启发、经 AI 优化的完整首饰概念图。拖动视角条可在三张相邻角度图之间切换。</p></div>
+      <div class="case-grid"><div class="case-visual"><aside class="metal-history" aria-label="算法实验历史版本"><h3>关联版本 <span id="metal-history-count" class="history-count">0 / 5</span></h3><p class="metal-history-note">点击恢复算法种子与迭代。AI 概念图按算法固定，不随参数重绘。</p><div id="metal-history-list" class="metal-history-list"><p class="history-empty">暂无历史版本</p></div></aside><figure class="case-image"><img id="case-image" src="assets/metal-views/colonization-front.jpg" alt="空间殖民机制启发的铜色分枝胸针 AI 概念图，正面视角"><div class="concept-view-controls" role="group" aria-label="AI 概念图有限视角预览"><button id="view-prev" type="button" aria-label="向左转一个视角">左偏</button><label for="view-angle">视角</label><input id="view-angle" type="range" min="0" max="2" step="1" value="1" aria-label="选择左偏、正面或右偏视角"><output id="view-angle-label" for="view-angle">正面</output><button id="view-next" type="button" aria-label="向右转一个视角">右偏</button></div><figcaption id="case-caption">AI 首饰概念图 · 空间殖民 · 多视角模拟约 ±35°，非真实三维模型</figcaption></figure></div><div class="case-copy"><div id="case-eyebrow" class="eyebrow">Study 02 / 10</div><h3 id="case-title">空间殖民 · 扇形胸针</h3><p id="case-description"></p><dl class="case-meta"><dt>对应机制</dt><dd id="case-mechanism"></dd><dt>研究依据</dt><dd id="case-citation"></dd><dt>图像状态</dt><dd>AI 生成的首饰概念预览；三张固定视角模拟有限转向。不是参数生成的网格，壁厚、连接和佩戴结构尚未验证。</dd></dl><a id="case-source" class="quiet-link" href="#references">查看完整文献记录</a><div class="case-actions"><button id="case-history-toggle" type="button" aria-controls="history-drawer" aria-expanded="false">关联历史 <span id="case-history-count">0 / 5</span></button><details class="action-menu"><summary>导出概念图</summary><div class="menu-panel"><button id="export-metal-button" class="metal-export" type="button">导出当前 AI 视角 JPG</button></div></details></div><div class="case-nav"><button id="case-prev" type="button" aria-label="上一种算法">上一项</button><span id="case-counter" class="case-counter">02 / 10</span><button id="case-next" type="button" aria-label="下一种算法">下一项</button></div></div></div>
+    </section>
+    <section id="archive" class="archive" aria-labelledby="archive-title"><div class="section-head"><div><div class="eyebrow">03 / Research index</div><h2 id="archive-title">十种生长机制</h2></div><p class="section-note">每个条目左侧是固定种子的运算预览，右侧是同一机制启发的三维金属概念。点击条目可同步查看上方生长面板与作品；研究来源集中列于下方。</p></div><div class="filters" role="group" aria-label="筛选算法类别"><button class="filter active" data-filter="all" type="button">全部 10</button><button class="filter" data-filter="network" type="button">分枝与网络</button><button class="filter" data-filter="texture" type="button">扩散与肌理</button><button class="filter" data-filter="rule" type="button">规则与细胞</button></div><div id="archive-grid" class="archive-grid"></div></section>
+    <section id="references" class="references" aria-labelledby="references-title"><div class="section-head"><div><div class="eyebrow">04 / Sources & provenance</div><h2 id="references-title">文献与图像来源</h2></div><p class="section-note">先列十篇核心论文及各自对应算法的意义，再列延伸研究、案例和图像来源；外部研究均可打开原始链接。</p></div><div id="references-list" class="references-list"></div><p class="references-note">机制缩略图来自本页的简化运算；首饰图为受算法启发的 AI 概念渲染。除用户提供的前期九宫格外，未复制论文插图或 Nervous System 的作品照片。</p></section>
+    
+  </main>
+  <footer class="footer shell"><span><strong>纹间</strong> · WenJian / 1.2.1</span><span>研究出处见各条目 · 本地页面无需联网运行，打开外部论文链接需要网络</span></footer>
+  <div id="status-toast" class="toast" role="status" aria-live="polite" hidden></div>
+  <script id="growth-engine">
+    function mulberry32(seed){let a=seed>>>0;return function(){a+=0x6D2B79F5;let t=a;t=Math.imul(t^t>>>15,t|1);t^=t+Math.imul(t^t>>>7,t|61);return ((t^t>>>14)>>>0)/4294967296}}
+    function createColony(options={}){
+      const seed=(Number(options.seed)||73)>>>0, pointCount=Math.max(1,Math.floor(Number(options.pointCount)||650));
+      const rng=mulberry32(seed), root={x:450,y:558,parent:-1};
+      const points=[];
+      while(points.length<pointCount){
+        const angle=(rng()*2-1)*1.18, radius=Math.sqrt(0.002+rng()*0.998)*490;
+        const x=root.x+Math.sin(angle)*radius*0.77, y=root.y-Math.cos(angle)*radius;
+        if(x>45&&x<855&&y>34&&y<550)points.push({x,y});
+      }
+      return {seed,points,nodes:[root],step:7,influence:Math.max(1,Number(options.influence)||100),kill:Math.max(1,Number(options.kill)||15),iteration:0,running:true};
+    }
+    function advanceColony(state){
+      if(!state.running)return false;
+      const cell=state.influence, grid=new Map(), key=(x,y)=>x+','+y;
+      state.nodes.forEach((node,index)=>{const gx=Math.floor(node.x/cell),gy=Math.floor(node.y/cell),k=key(gx,gy);if(!grid.has(k))grid.set(k,[]);grid.get(k).push(index)});
+      const sums=new Map(), limit=cell*cell;
+      for(const point of state.points){
+        const gx=Math.floor(point.x/cell),gy=Math.floor(point.y/cell);let closest=-1,best=limit;
+        for(let ox=-1;ox<=1;ox++)for(let oy=-1;oy<=1;oy++){
+          const candidates=grid.get(key(gx+ox,gy+oy))||[];
+          for(const index of candidates){const node=state.nodes[index],dx=point.x-node.x,dy=point.y-node.y,d2=dx*dx+dy*dy;if(d2<best){best=d2;closest=index}}
+        }
+        if(closest>=0&&best>0.000001){const node=state.nodes[closest],distance=Math.sqrt(best),sum=sums.get(closest)||{x:0,y:0};sum.x+=(point.x-node.x)/distance;sum.y+=(point.y-node.y)/distance;sums.set(closest,sum)}
+      }
+      const added=[];
+      for(const [parent,vector] of sums){const magnitude=Math.hypot(vector.x,vector.y);if(magnitude<1e-9)continue;const node=state.nodes[parent],next={x:node.x+state.step*vector.x/magnitude,y:node.y+state.step*vector.y/magnitude,parent};added.push(next)}
+      if(!added.length){state.running=false;return false}
+      state.nodes.push(...added);
+      const kill2=state.kill*state.kill;
+      state.points=state.points.filter(point=>!added.some(node=>{const dx=point.x-node.x,dy=point.y-node.y;return dx*dx+dy*dy<kill2}));
+      state.iteration++;
+      if(!state.points.length||state.iteration>=260)state.running=false;
+      return true;
+    }
+    const clamp=(n,a,b)=>Math.max(a,Math.min(b,n));
+    function buildFern(seed,density,spread,detail){
+      const rng=mulberry32(seed),generations=clamp(4+Math.floor(density/20),4,8);let grammar='X';
+      for(let g=0;g<generations;g++)grammar=[...grammar].map(ch=>ch==='X'?'F[+L]F[-L]X':ch==='L'?'F[+L][-L]':ch).join('');
+      const angle=(20+spread*.22)*Math.PI/180,step=315/(2*generations),segments=[],stack=[];
+      let x=0,y=0,a=-Math.PI/2+(rng()-.5)*.14,depth=0;
+      for(const ch of grammar){
+        if(ch==='F'){const nx=x+Math.cos(a)*step,ny=y+Math.sin(a)*step;segments.push({x1:x,y1:y,x2:nx,y2:ny,depth});x=nx;y=ny}
+        else if(ch==='+')a+=angle+(rng()-.5)*.03;
+        else if(ch==='-')a-=angle+(rng()-.5)*.03;
+        else if(ch==='['){stack.push([x,y,a,depth]);depth++}
+        else if(ch===']'){[x,y,a,depth]=stack.pop()}
+      }
+      const orientation=1.12+(rng()-.5)*.12,co=Math.cos(orientation),si=Math.sin(orientation);
+      for(const q of segments){const x1=q.x1,y1=q.y1,x2=q.x2,y2=q.y2;q.x1=x1*co-y1*si;q.y1=x1*si+y1*co;q.x2=x2*co-y2*si;q.y2=x2*si+y2*co}
+      const xs=segments.flatMap(q=>[q.x1,q.x2]),ys=segments.flatMap(q=>[q.y1,q.y2]);
+      const minx=Math.min(...xs),maxx=Math.max(...xs),miny=Math.min(...ys),maxy=Math.max(...ys),scale=Math.min(760/Math.max(1,maxx-minx),500/Math.max(1,maxy-miny));
+      const offsetX=450-(minx+maxx)*scale/2,offsetY=300-(miny+maxy)*scale/2;
+      for(const q of segments){q.x1=q.x1*scale+offsetX;q.x2=q.x2*scale+offsetX;q.y1=q.y1*scale+offsetY;q.y2=q.y2*scale+offsetY}
+      return {grammar,segments,visible:0,generations};
+    }
+    function createStudy(kind,options={}){
+      const seed=Number(options.seed)||73,density=clamp(Number(options.density)||55,1,100),spread=clamp(Number(options.spread)||55,1,100),detail=clamp(Number(options.detail)||55,1,100),rng=mulberry32(seed);
+      const s={kind,seed,density,spread,detail,rng,iteration:0,running:true,data:[]};
+      if(kind==='colonization'||kind==='venation'){
+        const c=createColony({seed,pointCount:Math.round(250+density*9),influence:45+spread*1.45,kill:5+detail*.14});c.step=5.5;
+        if(kind==='venation'){
+          c.nodes=[{x:75,y:300,parent:-1}];c.points=[];
+          while(c.points.length<Math.round(230+density*6)){
+            const x=100+rng()*730,t=(x-100)/730,w=Math.sin(Math.PI*t)*235*(.55+spread/220),y=300+(rng()*2-1)*w;
+            if(w>0)c.points.push({x,y});
+          }
+          c.influence=42+spread*1.25;c.kill=5+detail*.18;
+        }
+        s.data=c;
+      }else if(kind==='selforg'){
+        s.data={nodes:[{x:450,y:570,parent:-1,angle:-Math.PI/2,depth:0}],tips:[0],lightCompetition:true};
+      }else if(kind==='reaction'){
+        const w=126,h=84,a=new Float32Array(w*h).fill(1),b=new Float32Array(w*h);
+        for(let i=0;i<Math.round(8+density/5);i++){const cx=8+Math.floor(rng()*(w-16)),cy=8+Math.floor(rng()*(h-16));for(let y=-3;y<=3;y++)for(let x=-3;x<=3;x++)b[(cy+y)*w+cx+x]=1}
+        s.data={w,h,a,b};
+      }else if(kind==='dla'){
+        s.data={cells:new Set(['70,50']),points:[[70,50]],w:140,h:100};
+      }else if(kind==='lsystem'){
+        s.data=buildFern(seed,density,spread,detail);
+      }else if(kind==='phyllotaxis'){
+        s.data={points:[],angle:(131+spread*.95)*Math.PI/180};
+      }else if(kind==='physarum'){
+        const agents=[];for(let i=0;i<Math.round(60+density*1.5);i++){const a=rng()*Math.PI*2,r=20+rng()*35;agents.push({x:450+Math.cos(a)*r,y:300+Math.sin(a)*r,a})}
+        const food=[];for(let i=0;i<5;i++){const a=i*Math.PI*2/5+.3;food.push({x:450+Math.cos(a)*(120+spread*2.4),y:300+Math.sin(a)*(100+spread*1.7)})}
+        s.data={agents,food,trails:[]};
+      }else if(kind==='neuralca'){
+        const w=90,h=60,cells=new Uint8Array(w*h),age=new Uint8Array(w*h),target=new Uint8Array(w*h),phase=rng()*Math.PI*2;
+        for(let y=1;y<h-1;y++)for(let x=1;x<w-1;x++){
+          const dx=(x-45)/27,dy=(y-30)/27,rad=Math.hypot(dx,dy),theta=Math.atan2(dy,dx),lobes=0.81+0.11*Math.sin((5+Math.floor(spread/30))*theta+phase);
+          const ridge=Math.cos((5+Math.floor(detail/22))*theta+rad*(6+spread*.1)+phase),spoke=Math.abs(Math.sin(3*theta+phase*.3))<.16;
+          if(rad<.15||(rad<lobes&&(ridge>.58-density*.004||spoke)))target[y*w+x]=1;
+        }
+        cells[30*w+45]=1;age[30*w+45]=1;s.data={w,h,cells,age,target,damageEvents:0};
+      }else if(kind==='gca'){
+        s.data={voxels:new Set(['0,0,0']),points:[[0,0,0]]};
+      }else throw Error('Unknown study '+kind);
+      return s;
+    }
+    function advanceStudy(s){
+      if(!s.running)return false;const d=s.data,r=s.rng;
+      if(s.kind==='colonization'||s.kind==='venation'){
+        const before=d.nodes.length;advanceColony(d);s.iteration=d.iteration;s.running=d.running;
+        return d.nodes.length!==before;
+      }
+      if(s.kind==='selforg'){
+        const next=[],oldTips=d.tips.slice(),maxDepth=18;
+        for(const index of oldTips){const p=d.nodes[index];if(p.depth>=maxDepth)continue;
+          const rivals=oldTips.filter(other=>other!==index&&Math.hypot(d.nodes[other].x-p.x,d.nodes[other].y-p.y)<75).length;
+          const light=clamp(1-rivals*.13,0.15,1),branch=p.depth>3&&r()<(.10+s.density*.005)*light?2:1;
+          const candidates=[p.angle+(r()-.5)*(.16+s.spread*.003)];
+          if(branch===2)candidates.push(p.angle+(r()<.5?-1:1)*(.35+s.spread*.006));
+          for(let a of candidates){a=clamp(a,-Math.PI+.22,-.2);const len=Math.max(5,23+s.detail*.09-p.depth*.42),x=p.x+Math.cos(a)*len,y=p.y+Math.sin(a)*len;
+            if(x<24||x>876||y<24||y>575)continue;let shade=0;for(const other of oldTips){if(other===index)continue;const q=d.nodes[other];if(Math.hypot(q.x-x,q.y-y)<21){shade++;break}}
+            if(shade&&r()<.75)continue;const child=d.nodes.length;d.nodes.push({x,y,parent:index,angle:a,depth:p.depth+1,light});next.push(child)}
+        }d.tips=next;s.running=next.length>0&&d.nodes.length<2600;
+      }else if(s.kind==='reaction'){
+        const {w,h,a,b}=d,na=new Float32Array(a.length),nb=new Float32Array(b.length),feed=.022+s.density*.00025,kill=.045+s.spread*.00022,db=.2+s.detail*.005;
+        for(let y=1;y<h-1;y++)for(let x=1;x<w-1;x++){const i=y*w+x,lapA=a[i-1]+a[i+1]+a[i-w]+a[i+w]-4*a[i],lapB=b[i-1]+b[i+1]+b[i-w]+b[i+w]-4*b[i],react=a[i]*b[i]*b[i];na[i]=clamp(a[i]+lapA-react+feed*(1-a[i]),0,1);nb[i]=clamp(b[i]+db*lapB+react-(kill+feed)*b[i],0,1)}
+        for(let x=0;x<w;x++){na[x]=na[w+x];na[(h-1)*w+x]=na[(h-2)*w+x];nb[x]=nb[w+x];nb[(h-1)*w+x]=nb[(h-2)*w+x]}
+        d.a=na;d.b=nb;s.running=s.iteration<2200;
+      }else if(s.kind==='dla'){
+        for(let k=0;k<Math.round(3+s.density/14);k++){let a=r()*Math.PI*2,rad=11+Math.sqrt(d.points.length)*(1.1+s.spread*.012),x=Math.round(70+Math.cos(a)*rad),y=Math.round(50+Math.sin(a)*rad);
+          for(let walk=0;walk<1500;walk++){x+=Math.floor(r()*3)-1;y+=Math.floor(r()*3)-1;x=clamp(x,2,137);y=clamp(y,2,97);
+            if(d.cells.has((x-1)+','+y)||d.cells.has((x+1)+','+y)||d.cells.has(x+','+(y-1))||d.cells.has(x+','+(y+1))){const key=x+','+y;if(!d.cells.has(key)){d.cells.add(key);d.points.push([x,y])}break}
+            if(Math.hypot(x-70,y-50)>66)break;
+          }}s.running=d.points.length<1200;
+      }else if(s.kind==='lsystem'){
+        d.visible=Math.min(d.segments.length,d.visible+Math.max(2,Math.ceil(d.segments.length/70)));s.running=d.visible<d.segments.length;
+      }else if(s.kind==='phyllotaxis'){
+        for(let k=0;k<Math.round(7+s.density/6);k++){const n=d.points.length+1,a=n*d.angle+(r()-.5)*(101-s.detail)*.006,rad=(2.7+s.spread*.05)*Math.sqrt(n);d.points.push({x:450+Math.cos(a)*rad,y:300+Math.sin(a)*rad,r:Math.max(1.5,2+s.detail*.045-n*.001)})}s.running=d.points.length<1800;
+      }else if(s.kind==='physarum'){
+        for(const p of d.agents){let target=d.food[0],best=Infinity;for(const f of d.food){const dist=Math.hypot(f.x-p.x,f.y-p.y);if(dist<best){best=dist;target=f}}
+          const desired=Math.atan2(target.y-p.y,target.x-p.x),turn=Math.atan2(Math.sin(desired-p.a),Math.cos(desired-p.a));p.a+=clamp(turn,-.025-s.spread*.001,-.025+s.spread*.001)+(r()-.5)*(.1+s.detail*.003);
+          const oldx=p.x,oldy=p.y;p.x=clamp(p.x+Math.cos(p.a)*3,10,890);p.y=clamp(p.y+Math.sin(p.a)*3,10,590);d.trails.push([oldx,oldy,p.x,p.y])
+        }if(d.trails.length>4000)d.trails.splice(0,d.trails.length-4000);s.running=s.iteration<900;
+      }else if(s.kind==='neuralca'){
+        const {w,h,cells,target}=d,next=cells.slice(),age=d.age.slice(),chance=.11+s.density*.006;
+        for(let y=1;y<h-1;y++)for(let x=1;x<w-1;x++){const i=y*w+x;if(cells[i]){age[i]=Math.min(255,age[i]+4);continue}if(!target[i])continue;
+          let neighbors=0;for(let yy=-1;yy<=1;yy++)for(let xx=-1;xx<=1;xx++)if(cells[i+yy*w+xx])neighbors++;
+          if(neighbors&&r()<chance*(neighbors<5?1:.68)){next[i]=1;age[i]=1}
+        }
+        if(s.iteration===95||s.iteration===175){const occupied=[];for(let i=0;i<next.length;i++)if(next[i]&&target[i]&&Math.hypot(i%w-45,Math.floor(i/w)-30)>7)occupied.push(i);
+          if(occupied.length){const chosen=occupied[Math.floor(r()*occupied.length)],cx=chosen%w,cy=Math.floor(chosen/w),radius=5+Math.floor(s.detail/22);
+            for(let y=1;y<h-1;y++)for(let x=1;x<w-1;x++)if(Math.hypot(x-cx,y-cy)<radius){next[y*w+x]=0;age[y*w+x]=0}d.damageEvents++}
+        }
+        d.cells=next;d.age=age;s.running=s.iteration<250;
+      }else if(s.kind==='gca'){
+        for(let j=0;j<Math.round(4+s.density/11);j++){const p=d.points[Math.floor(r()*d.points.length)],dir=[[1,0,0],[-1,0,0],[0,1,0],[0,-1,0],[0,0,1],[0,0,-1]][Math.floor(r()*6)],x=p[0]+dir[0],y=p[1]+dir[1],z=p[2]+dir[2],limit=3+s.spread*.09;
+          if(Math.hypot(x,y,z*.9)>limit||Math.abs(z)>2+s.detail*.065)continue;const key=x+','+y+','+z;if(!d.voxels.has(key)){d.voxels.add(key);d.points.push([x,y,z])}
+        }s.running=d.points.length<1800;
+      }
+      s.iteration++;return true;
+    }
+    function studySignature(s){const d=s.data;if(s.kind==='colonization'||s.kind==='venation')return JSON.stringify([d.nodes.length,d.points.length,d.nodes.at(-1),d.points[0]]);
+      if(s.kind==='reaction')return JSON.stringify([s.iteration,d.b.reduce((sum,v,i)=>sum+v*(i%97+1),0).toFixed(4)]);
+      if(s.kind==='neuralca')return JSON.stringify([s.iteration,d.cells.reduce((sum,v,i)=>sum+v*(i%97+1),0),d.damageEvents]);
+      return JSON.stringify([s.iteration,d.nodes?.length,d.nodes?.at(-1),d.points?.length,d.points?.at(-1),d.visible??d.segments?.length,d.segments?.[Math.max(0,(d.visible||1)-1)],d.trails?.length,d.trails?.at(-1),d.cells?.size,d.agents?.[0],d.food?.[0]]);
+    }
+  </script>
+  <script>
+    const graphPalettes={light:{bg:'#f0f2f5',grid:'rgba(30,45,65,.055)',line:'42,100,162',ghost:'rgba(42,100,162,.25)',points:'rgba(42,100,162,.27)',solid:'#4179b4',strong:'#245b96',young:'#76a8d8',middle:'#4a82ba',voxelTop:'#82a7cc',voxelLeft:'#49709a',voxelRight:'#658db5',voxelEdge:'#f0f2f5'},dark:{bg:'#24262b',grid:'rgba(255,255,255,.045)',line:'154,198,255',ghost:'rgba(154,198,255,.25)',points:'rgba(154,198,255,.28)',solid:'#9ac6ff',strong:'#d5e5ff',young:'#d5e5ff',middle:'#a3c4ec',voxelTop:'#bad0ed',voxelLeft:'#57749a',voxelRight:'#86a6ce',voxelEdge:'#24262b'}};
+    let currentTheme='light';try{const stored=localStorage.getItem('growth-atlas-theme');if(stored==='dark'||stored==='light')currentTheme=stored}catch{}
+    document.documentElement.dataset.theme=currentTheme;let drawingColors=graphPalettes[currentTheme];
+    const archive=[
+      {id:'venation',name:'叶脉生长',en:'Leaf venation',year:'2005',group:'network',desc:'叶脉朝生长素来源延伸，来源又因叶脉接近而改变，可形成开放或闭合脉络。',source:'Runions 等 · Modeling and visualization of leaf venation patterns',url:'https://algorithmicbotany.org/papers/venation.sig2005.pdf'},
+      {id:'colonization',name:'空间殖民',en:'Space colonization',year:'2007',group:'network',desc:'吸引点表示可占据空间，枝条向邻近点延伸，并在抵达后移除这些点。',source:'Runions 等 · Modeling Trees with a Space Colonization Algorithm',url:'https://diglib.eg.org/items/b5d756ee-0ab3-436e-a5cb-617d50df78fb',live:true},
+      {id:'selforg',name:'树木自组织',en:'Self-organizing trees',year:'2009',group:'network',desc:'芽与枝条对光和空间的竞争，结合内部信号，形成不同的整体树形。',source:'Pałubicki 等 · Self-organizing tree models for image synthesis',url:'https://research.adobe.com/publication/self-organizing-tree-models-for-image-synthesis/'},
+      {id:'reaction',name:'反应扩散',en:'Reaction–diffusion',year:'1952',group:'texture',desc:'反应物相互作用并向周围扩散，从均匀环境中形成斑点、条纹等表面图案。',source:'Turing · The Chemical Basis of Morphogenesis',url:'https://doi.org/10.1098/rstb.1952.0012'},
+      {id:'dla',name:'扩散限制凝聚',en:'Diffusion-limited aggregation',year:'1981',group:'texture',desc:'随机游走粒子附着到已有团簇，逐渐构成疏松的树枝状聚集体。',source:'Witten & Sander · Diffusion-Limited Aggregation',url:'https://doi.org/10.1103/PhysRevLett.47.1400'},
+      {id:'lsystem',name:'L 系统',en:'L-systems',year:'1990',group:'rule',desc:'并行重写规则逐代扩展符号，再将符号转译为枝、叶与分叉。',source:'Prusinkiewicz & Lindenmayer · The Algorithmic Beauty of Plants',url:'https://algorithmicbotany.org/papers/abop/abop.pdf'},
+      {id:'phyllotaxis',name:'叶序抑制场',en:'Phyllotaxis',year:'2006',group:'texture',desc:'新器官在现有器官影响较弱的位置出现，产生有秩序的螺旋排列。',source:'Smith 等 · Inhibition fields for phyllotactic pattern formation',url:'https://algorithmicbotany.org/papers/inhibit.cjb2006.pdf'},
+      {id:'physarum',name:'黏菌运输网络',en:'Physarum networks',year:'2015',group:'network',desc:'受黏菌觅食行为启发的粒子群，通过局部趋化作用形成可调整的运输网络。',source:'Jones · The Emergence and Dynamical Evolution of Complex Transport Networks',url:'https://arxiv.org/abs/1503.06579'},
+      {id:'neuralca',name:'神经元胞自动机',en:'Neural cellular automata',year:'2020',group:'rule',desc:'局部单元反复更新，从一个种子生长成目标图案，并可学习在受损后再生。',source:'Mordvintsev 等 · Growing Neural Cellular Automata',url:'https://distill.pub/2020/growing-ca/'},
+      {id:'gca',name:'三维生成式元胞自动机',en:'Generative cellular automata',year:'2021',group:'rule',desc:'在稀疏三维体素及邻域中逐步更新，生成或补全学习到的三维形体。',source:'Zhang 等 · Learning to Generate 3D Shapes with Generative Cellular Automata',url:'https://arxiv.org/abs/2103.04130'}
+    ];
+    const studyNotes={
+      venation:{text:'叶片扩张时，离散的生长素源与既有脉络共同决定新脉的延伸方向；源点位置及脉络接近后的反馈会改变主脉、侧脉和局部闭环。本站将这些关系简化为二维点与线的生长，便于比较密度和感应尺度。',related:'Rolland-Lagan 与 Prusinkiewicz：生长素通道化与叶脉',url:'https://algorithmicbotany.org/papers/canalization.pj2005.html'},
+      colonization:{text:'在预设树冠空间放置吸引点，枝梢汇总附近点的方向后延伸，接近的点随之移除。点的分布、作用距离与移除阈值会改变树冠疏密和分枝方向。本站显示该方法的二维投影，尚未计算真实枝径与受力。',related:'Kochhar：隐式曲面与空间殖民树形扩展',url:'https://algorithmicbotany.org/papers/kochhar.th2010.html'},
+      selforg:{text:'树木自组织模型把芽视为主要生长端。芽和枝条争夺光与空间，阴影、资源分配及内部信号共同影响继续生长、分叉或停长，因此树形会随环境改变。本页只提取芽点竞争和局部遮蔽作为交互演示。',related:'TreeSketch：可交互的自组织树木建模',url:'https://algorithmicbotany.org/papers/TreeSketch.SBM2012.html'},
+      reaction:{text:'图灵提出，相互反应且扩散速率不同的物质可使均匀状态失稳，形成空间图案。Pearson 后续数值研究表明，简单双组分系统也能出现斑点、分裂和不规则纹理。本页用离散二维迭代观察参数如何改变斑纹。',related:'Pearson：简单双组分系统的复杂图案',url:'https://arxiv.org/abs/patt-sol/9304003'},
+      dla:{text:'随机游走粒子碰到已有团簇便附着；外突位置更容易先遇到后续粒子，于是逐渐形成稀疏枝晶与多尺度空隙。三维研究表明这种凝聚仍呈分形特征。本页使用平面网格显示附着过程，不推断金属结构强度。',related:'Sander 等：三维扩散限制凝聚',url:'https://journals.aps.org/prb/abstract/10.1103/PhysRevB.28.6394'},
+      lsystem:{text:'L 系统从初始符号串出发，让同一代符号并行重写，再把前进、转角和分支栈解释成几何线条。重写层级、转角与长度会系统改变重复节律。本页采用蕨叶式规则，借此与受光照和空间影响的自组织树区别。',related:'Hanan：参数化 L 系统与植物可视化',url:'https://www.algorithmicbotany.org/papers/hanan.dis1992.html'},
+      phyllotaxis:{text:'真实叶序不仅是按固定角度排点：茎尖上已有原基的抑制作用会影响新原基出现的位置，生长素运输也参与调节。不同条件可形成螺旋、对生或轮生。本页用螺旋点阵表达排列效果，未求解论文的抑制场。',related:'Smith 等：生长素运输与叶序模型',url:'https://algorithmicbotany.org/papers/phyllo.pnas2006.html'},
+      physarum:{text:'黏菌在食物源之间探索并调整管网，较有利的通道可被增强，冗余路径则可能退化。相关研究用局部适应规则讨论连接可靠性与网络成本。本页以趋向食物点的粒子轨迹表达探索，未复现完整的流量反馈模型。',related:'Tero 等：生物启发的自适应网络设计',url:'https://doi.org/10.1126/science.1177894'},
+      neuralca:{text:'神经元胞自动机让每个单元反复读取邻域，并执行共享的局部更新规则。论文中的规则经训练后可从单个种子形成图案，在局部损伤后再生，也可学习动态纹理。本页只用有孔隙的启发式规则演示，未载入训练权重。',related:'Niklasson 等：自组织纹理',url:'https://distill.pub/selforg/2021/textures/'},
+      gca:{text:'三维生成式元胞自动机在已占据体素及其邻域逐步提出新单元，可对稀疏输入进行生成或补全。原论文依赖学习到的概率转移与稀疏卷积；后续研究扩展到场景补全。本页仅绘制启发式体素增生与等轴测投影。',related:'Zhang 等：概率式隐式场景补全',url:'https://arxiv.org/abs/2204.01264'}
+    };
+    const products={
+      venation:{type:'立体叶脉吊坠',idea:'从主脉出发的分支与局部闭环，转译成有前后层次的拱形镂空吊坠。'},
+      colonization:{type:'扇形分枝胸针',idea:'吸引点引导的枝条从单一起点扩展，转译成前后交叠、枝径渐变的立体胸针。'},
+      selforg:{type:'芽点树冠耳骨夹',idea:'不同枝条争夺光与空间，转译成粗细有别、芽点向外伸展的环抱式耳骨夹。'},
+      reaction:{type:'曲面迷宫纹戒指',idea:'反应与扩散形成的曲折边界，转译成环绕戒面起伏的可触摸浮雕，而非平面印花。'},
+      dla:{type:'凝聚枝晶吊坠',idea:'随机游走粒子持续附着，转译成由致密核心向外增长的多层枝晶与节点。'},
+      lsystem:{type:'递归蕨叶耳饰',idea:'并行重写形成的层级重复，转译成尺度递减且前后弯曲的一对金属蕨叶。'},
+      phyllotaxis:{type:'螺旋芽序胸针',idea:'新芽避开已有芽点的抑制区，转译成沿凸面排列的螺旋鳞片与芽点。'},
+      physarum:{type:'运输网络手镯',idea:'粒子群形成和调整的路径，转译成包裹腕部、具有节点与回路的立体管网。'},
+      neuralca:{type:'生长细胞吊坠',idea:'局部细胞更新与再生，转译成自种子扩展、局部重新连接的模块化体块。'},
+      gca:{type:'三维体素格构戒指',idea:'稀疏体素及邻域逐步更新，转译成围绕戒圈累积的多层金属格构。'}
+    };
+    const grid=document.getElementById('archive-grid');
+    grid.innerHTML=archive.map((item,i)=>`<article class="card" data-id="${item.id}" data-group="${item.group}"><div class="card-art"><div class="motif-frame"><img loading="lazy" src="assets/algorithm-previews/${item.id}.svg" alt="${item.name}固定种子算法预览"></div><div class="metal-frame"><img loading="lazy" src="assets/metal-views/${item.id}-front.jpg" alt="${item.name}启发的${products[item.id].type} AI 概念渲染"></div></div><div class="card-content"><span class="card-index">NO. ${String(i+1).padStart(2,'0')} / ${item.year}</span><h3>${item.name}</h3><p><span lang="en">${item.en}</span><br>${item.desc}</p><div class="card-bottom"><span class="tag">可交互生长演示</span><a class="source-link" href="#ref-${String(i+1).padStart(2,'0')}" aria-label="查看 ${item.source}">文献 [${String(i+1).padStart(2,'0')}]</a></div><button class="card-select" data-id="${item.id}" type="button">查看对应实验与 AI 概念 </button></div></article>`).join('');
+    document.getElementById('references-list').innerHTML=
+      `<h3 class="reference-group-title">核心论文 · 十种算法的依据与对应意义</h3><div class="reference-columns">`+
+      archive.map((item,i)=>{const note=studyNotes[item.id],number=String(i+1).padStart(2,'0');return `<div class="reference-item" id="ref-${number}" data-reference-kind="core"><b>[${number}]</b><div><strong>${item.name} · ${item.year}</strong><p>${item.source}</p><details class="reference-detail"><summary>对应算法与意义</summary><p class="reference-significance">${note.text}</p></details><a href="${item.url}" target="_blank" rel="noopener noreferrer">查看原始研究</a></div></div>`}).join('')+
+      `</div><h3 class="reference-group-title">延伸研究 · 与核心算法逐项对应</h3><div class="reference-columns">`+
+      archive.map((item,i)=>{const note=studyNotes[item.id],number=String(i+1).padStart(2,'0');return `<div class="reference-item" id="ref-r${number}"><b>[R${number}]</b><div><strong>${item.name} · 延伸研究</strong><p>${note.related}</p><a href="${note.url}" target="_blank" rel="noopener noreferrer">查看延伸材料</a></div></div>`}).join('')+
+      `</div><h3 class="reference-group-title">应用、设计与图像来源</h3><div class="reference-columns"><div class="reference-item" id="ref-11"><b>[11]</b><div><strong>Reaction Jewelry · 2023 · 应用先例</strong><p>Nervous System 对反应扩散纹理与金属首饰的应用记录；本站没有复制其作品图。</p><a href="https://n-e-r-v-o-u-s.com/blog/?p=9442" target="_blank" rel="noopener noreferrer">查看原始案例</a></div></div>`+
+      `<div class="reference-item" id="ref-12"><b>[12]</b><div><strong>MIT Media Lab · 视觉识别参考</strong><p>Pentagram 的模块化标识曾作为早期分枝标识参考；当前“纹”字图标采用源泉圆体粗体字形，来源见随包字体说明。</p><a href="https://www.pentagram.com/work/mit-media-lab" target="_blank" rel="noopener noreferrer">查看设计案例</a></div></div>`+
+      `<div class="reference-item" id="ref-13"><b>[13]</b><div><strong>MIT Museum · 视觉识别参考</strong><p>Pentagram 的博物馆视觉系统作为克制、可延展识别的参考；未复制其图形。</p><a href="https://www.pentagram.com/work/mit-museum" target="_blank" rel="noopener noreferrer">查看设计案例</a></div></div>`+
+      `<div class="reference-item" id="ref-u1"><b>[U1]</b><div><strong>铜色九宫格 · 用户提供的前期概念图</strong><p>作为空间殖民首饰概念的造型方向参考；不是本页新生成的多视角素材，也不是实体照片。</p><a href="assets/colonization-concepts.png" target="_blank" rel="noopener noreferrer">查看原图</a></div></div>`+
+      `<div class="reference-item" id="ref-a1"><b>[A1]</b><div><strong>本页十组 AI 首饰多视角概念图 · 2026</strong><p>由 OpenAI imagegen 按各算法机制分别生成；三张静态角度图用于有限视角切换。图像仅作设计概念，不代表算法直接输出或已验证的制造模型。</p><div class="reference-asset-links">${archive.map(item=>`<a href="assets/metal-views/${item.id}-front.jpg" target="_blank" rel="noopener noreferrer">${item.name}</a>`).join(' · ')}</div><a href="docs/ai-concept-provenance.md">查看图像生成与对应记录</a></div></div></div>`;
+    const studySelect=document.getElementById('study-select');
+    studySelect.innerHTML=archive.map((item,i)=>`<option value="${item.id}">${String(i+1).padStart(2,'0')} · ${item.name}</option>`).join('');
+    const canvas=document.getElementById('growth-canvas'),ctx=canvas.getContext('2d');
+    const count=document.getElementById('point-count'),influence=document.getElementById('influence'),kill=document.getElementById('kill'),speed=document.getElementById('speed'),seedInput=document.getElementById('seed-input');
+    const labels={
+      venation:['生长素点密度','感应范围','脉端消除距离'],colonization:['吸引点密度','感应范围','吸引点消除距离'],selforg:['分枝概率','向外张角','枝长与细度'],
+      reaction:['反应物投放密度','反应阈值','扩散速率'],dla:['粒子投放密度','游走范围','附着细度'],lsystem:['重写层级','分枝角度','枝长衰减'],
+      phyllotaxis:['芽点增生密度','分歧角','芽点尺度'],physarum:['粒子数量','食物点范围','探索扰动'],neuralca:['局部生长概率','生长边界','细胞更新半径'],gca:['体素增生概率','生长范围','层间厚度']
+    };
+    const caveat={neuralca:'启发式局部随机规则；不含论文训练所得的神经网络权重。',gca:'启发式三维体素增生；不含论文训练所得的生成模型。'};
+    const warmup={venation:45,colonization:35,selforg:10,reaction:210,dla:75,lsystem:12,phyllotaxis:38,physarum:95,neuralca:50,gca:68};
+    let selectedId='colonization',state,playing=true,last=0,accumulated=0,sliderTimer=0,activeHistory=-1,conceptView=1;
+    const conceptViewNames=['left','front','right'],conceptViewLabels=['左偏 35°','正面','右偏 35°'];
+    function updateConceptView(index){conceptView=Math.max(0,Math.min(2,Number(index)||0));const item=archive.find(entry=>entry.id===selectedId);const image=document.getElementById('case-image');image.src=`assets/metal-views/${selectedId}-${conceptViewNames[conceptView]}.jpg`;image.alt=item.name+'机制启发的'+products[selectedId].type+' AI 概念图，'+conceptViewLabels[conceptView]+'视角';document.getElementById('view-angle').value=String(conceptView);document.getElementById('view-angle-label').textContent=conceptViewLabels[conceptView];document.getElementById('view-prev').disabled=conceptView===0;document.getElementById('view-next').disabled=conceptView===2}
+    const sessionsById=new Map();
+    const historyById=new Map(archive.map(item=>[item.id,[]]));
+    function currentHistory(){return historyById.get(selectedId)}
+    function renderHistory(){const entries=currentHistory();document.getElementById('history-count').textContent=entries.length+' / 5';
+      document.getElementById('history-list').innerHTML=entries.length?entries.map((entry,i)=>`<button type="button" class="history-item${activeHistory===i?' active':''}" data-history-index="${i}" aria-label="载入${entry.id}的第${i+1}个历史版本，种子${entry.seed}"><img src="${entry.thumb}" alt="种子 ${entry.seed} 的生成缩略图"><span>种子 ${entry.seed}<br>迭代 ${entry.iteration}</span></button>`).join(''):'<p class="history-empty">此算法暂无历史图。生长结束时自动保存，也可点击“保存当前版本”。</p>';
+      document.getElementById('metal-history-count').textContent=entries.length+' / 5';window.productUI?.sync();
+      document.getElementById('metal-history-list').innerHTML=entries.length?entries.map((entry,i)=>`<button type="button" class="history-item${activeHistory===i?' active':''}" data-history-index="${i}" aria-label="恢复${entry.id}算法版本，种子${entry.seed}"><img src="${entry.thumb}" alt="种子 ${entry.seed} 的算法生长缩略图"><span>种子 ${entry.seed}<br>迭代 ${entry.iteration}</span></button>`).join(''):'<p class="history-empty">与上方算法实验同步保存。</p>';
+    }
+    function saveCurrent(){const entries=currentHistory(),signature=studySignature(state);if(entries[0]?.signature===signature)return;
+      entries.unshift({id:selectedId,seed:state.seed,density:state.density,spread:state.spread,detail:state.detail,iteration:state.iteration,viewIndex:conceptView,thumb:canvas.toDataURL('image/png'),signature});
+      if(entries.length>5)entries.length=5;activeHistory=0;renderHistory();
+    }
+    function restoreHistory(index){const entry=currentHistory()[index];if(!entry)return;
+      count.value=entry.density;influence.value=entry.spread;kill.value=entry.detail;seedInput.value=entry.seed;
+      [[count,'count-value'],[influence,'influence-value'],[kill,'kill-value']].forEach(([input,id])=>document.getElementById(id).textContent=input.value);
+      state=createStudy(selectedId,entry);for(let i=0;i<entry.iteration&&state.running;i++)advanceStudy(state);
+      activeHistory=index;playing=false;accumulated=0;updateConceptView(entry.viewIndex??1);update();render();renderHistory();
+    }
+    function settings(){return {seed:Number(seedInput.value)||73,density:Number(count.value),spread:Number(influence.value),detail:Number(kill.value)}}
+    function drawLine(context,x1,y1,x2,y2,width=1,alpha=1){context.beginPath();context.moveTo(x1,y1);context.lineTo(x2,y2);context.lineWidth=width;context.strokeStyle=`rgba(${drawingColors.line},${alpha})`;context.lineCap='round';context.stroke()}
+    function drawStudy(context,s){
+      context.fillStyle=drawingColors.bg;context.fillRect(0,0,900,600);
+      context.strokeStyle=drawingColors.grid;context.lineWidth=1;
+      for(let x=50;x<900;x+=50){context.beginPath();context.moveTo(x,0);context.lineTo(x,600);context.stroke()}
+      for(let y=50;y<600;y+=50){context.beginPath();context.moveTo(0,y);context.lineTo(900,y);context.stroke()}
+      const d=s.data;
+      if(s.kind==='colonization'||s.kind==='venation'){
+        if(s.kind==='venation'){
+          context.beginPath();context.moveTo(65,300);context.bezierCurveTo(300,20,675,30,850,300);context.bezierCurveTo(675,570,300,580,65,300);context.strokeStyle=drawingColors.ghost;context.lineWidth=2;context.stroke();drawLine(context,65,300,845,300,1.2,.3);
+        }
+        context.fillStyle=drawingColors.points;for(const p of d.points){context.beginPath();context.arc(p.x,p.y,1.4,0,Math.PI*2);context.fill()}
+        const children=new Array(d.nodes.length).fill(0);for(let i=d.nodes.length-1;i>0;i--)children[d.nodes[i].parent]+=1+children[i];
+        for(let i=1;i<d.nodes.length;i++){const n=d.nodes[i],p=d.nodes[n.parent];drawLine(context,p.x,p.y,n.x,n.y,Math.min(4,.75+Math.sqrt(children[i])*.2),.95)}
+      }else if(s.kind==='selforg'){
+        for(let i=1;i<d.nodes.length;i++){const n=d.nodes[i],p=d.nodes[n.parent];drawLine(context,p.x,p.y,n.x,n.y,Math.max(.8,3.7-n.depth*.18),.92)}
+        context.fillStyle=drawingColors.strong;for(const index of d.tips){const p=d.nodes[index];context.beginPath();context.arc(p.x,p.y,3+p.light*.8,0,Math.PI*2);context.fill()}
+      }else if(s.kind==='reaction'){
+        const cw=900/d.w,ch=600/d.h;for(let y=0;y<d.h;y++)for(let x=0;x<d.w;x++){const v=d.b[y*d.w+x];if(v<.035)continue;context.fillStyle=`rgba(${drawingColors.line},${Math.min(.94,.13+v*1.6)})`;context.fillRect(x*cw,y*ch,cw+.4,ch+.4)}
+      }else if(s.kind==='dla'){
+        context.fillStyle=drawingColors.solid;for(const [x,y] of d.points)context.fillRect(x*900/d.w-2,y*600/d.h-2,4,4);
+      }else if(s.kind==='lsystem'){
+        for(let i=0;i<d.visible;i++){const q=d.segments[i];drawLine(context,q.x1,q.y1,q.x2,q.y2,Math.max(.65,2.7-q.depth*.28),.86)}
+      }else if(s.kind==='phyllotaxis'){
+        context.fillStyle=drawingColors.solid;for(const p of d.points){context.beginPath();context.arc(p.x,p.y,p.r,0,Math.PI*2);context.fill()}
+      }else if(s.kind==='physarum'){
+        for(let i=0;i<d.trails.length;i++){const q=d.trails[i];drawLine(context,q[0],q[1],q[2],q[3],1.1,.12+.45*i/d.trails.length)}
+        context.fillStyle=drawingColors.strong;for(const f of d.food){context.beginPath();context.arc(f.x,f.y,5,0,Math.PI*2);context.fill()}
+      }else if(s.kind==='neuralca'){
+        const cw=900/d.w,ch=600/d.h;for(let y=0;y<d.h;y++)for(let x=0;x<d.w;x++){const i=y*d.w+x;if(!d.cells[i])continue;const maturity=Math.min(1,d.age[i]/85);context.fillStyle=maturity>.65?drawingColors.strong:maturity>.3?drawingColors.middle:drawingColors.young;context.fillRect(x*cw+.8,y*ch+.8,cw-1.25,ch-1.25)}
+      }else if(s.kind==='gca'){
+        const voxels=d.points.slice().sort((a,b)=>(a[0]+a[1]+a[2])-(b[0]+b[1]+b[2]));for(const [x,y,z] of voxels){const px=450+(x-y)*17,py=335+(x+y)*9-z*21;
+          context.beginPath();context.moveTo(px,py-10);context.lineTo(px+15,py-2);context.lineTo(px,py+7);context.lineTo(px-15,py-2);context.closePath();context.fillStyle=drawingColors.voxelTop;context.fill();context.strokeStyle=drawingColors.voxelEdge;context.stroke();
+          context.beginPath();context.moveTo(px-15,py-2);context.lineTo(px,py+7);context.lineTo(px,py+22);context.lineTo(px-15,py+13);context.closePath();context.fillStyle=drawingColors.voxelLeft;context.fill();context.stroke();
+          context.beginPath();context.moveTo(px+15,py-2);context.lineTo(px,py+7);context.lineTo(px,py+22);context.lineTo(px+15,py+13);context.closePath();context.fillStyle=drawingColors.voxelRight;context.fill();context.stroke();
+        }
+      }
+    }
+    function render(){drawStudy(ctx,state)}
+    function update(){
+      const d=state.data;document.getElementById('stat-iteration').textContent=state.iteration;
+      document.getElementById('stat-nodes').textContent=d.nodes?.length??d.points?.length??d.visible??d.segments?.length??d.trails?.length??(d.cells instanceof Set?d.cells.size:d.cells?.reduce((a,b)=>a+b,0))??0;
+      document.getElementById('stat-points').textContent=(selectedId==='colonization'||selectedId==='venation')?d.points.length:selectedId==='neuralca'?d.damageEvents+' 次':state.density+' / '+state.spread+' / '+state.detail;
+      document.getElementById('stat-seed').textContent=state.seed;
+      document.getElementById('run-status').textContent=!state.running?'生长结束':playing?'正在生长':'已暂停';
+      document.getElementById('play-button').textContent=playing?'暂停生长':'继续生长';window.productUI?.sync();
+    }
+    function reset(){state=createStudy(selectedId,settings());for(let i=0;i<warmup[selectedId]&&state.running;i++)advanceStudy(state);playing=!matchMedia('(prefers-reduced-motion: reduce)').matches&&state.running;accumulated=0;activeHistory=-1;update();render();renderHistory();if(!state.running)saveCurrent()}
+    function selectStudy(id){
+      const index=archive.findIndex(item=>item.id===id);if(index<0)return;
+      if(state)sessionsById.set(selectedId,{state,playing,activeHistory,viewIndex:conceptView,speed:Number(speed.value)});
+      const item=archive[index],product=products[id],ref='ref-'+String(index+1).padStart(2,'0');selectedId=id;studySelect.value=id;
+      document.getElementById('lab-title').textContent=item.name;
+      document.getElementById('lab-description').textContent=studyNotes[id].text;
+      document.getElementById('lab-materials').innerHTML=`<span>研究材料</span><a href="${item.url}" target="_blank" rel="noopener noreferrer">[${String(index+1).padStart(2,'0')}] 核心论文</a><a href="${studyNotes[id].url}" target="_blank" rel="noopener noreferrer">[R${String(index+1).padStart(2,'0')}] ${studyNotes[id].related}</a>`;
+      ['density-label','spread-label','detail-label'].forEach((key,i)=>document.getElementById(key).textContent=labels[id][i]);
+      document.getElementById('current-source').href=item.url;document.getElementById('current-source').textContent=item.source+' ';
+      document.getElementById('method-caveat').textContent=(caveat[id]||'此演示为研究机制的简化转译。')+' 导出 PNG 不含可打印三维网格。';
+      document.getElementById('stat-extra-title').textContent=(id==='venation'||id==='colonization')?'剩余吸引点 ':id==='neuralca'?'再生事件 ':'参数组合 ';
+      updateConceptView(1);
+      document.getElementById('case-caption').textContent='AI 首饰概念图 · '+item.name+' · 多视角模拟约 ±35°，非真实三维模型';
+      document.getElementById('case-eyebrow').textContent='Study '+String(index+1).padStart(2,'0')+' / 10';
+      document.getElementById('case-title').textContent=item.name+' · '+product.type;
+      document.getElementById('case-description').textContent=product.idea+' 本图根据该机制生成 AI 首饰概念，每种算法配三张固定视角图供有限转向预览；它不会随随机种子或生长参数重绘，也不是可打印三维网格。';
+      document.getElementById('case-mechanism').textContent=item.en+' / '+item.name;
+      document.getElementById('case-citation').textContent='['+String(index+1).padStart(2,'0')+'] '+item.source;
+      document.getElementById('case-source').href='#'+ref;
+      document.getElementById('case-counter').textContent=String(index+1).padStart(2,'0')+' / 10';
+      document.querySelectorAll('.card').forEach(card=>card.classList?.toggle('active',card.dataset.id===id));
+      const saved=sessionsById.get(id);
+      if(saved){state=saved.state;playing=saved.playing;activeHistory=saved.activeHistory;count.value=state.density;influence.value=state.spread;kill.value=state.detail;seedInput.value=state.seed;speed.value=saved.speed;updateConceptView(saved.viewIndex);accumulated=0;update();render();renderHistory()}
+      else{count.value=55;influence.value=55;kill.value=55;seedInput.value=73;speed.value=3;reset()}
+      [[count,'count-value'],[influence,'influence-value'],[kill,'kill-value'],[speed,'speed-value']].forEach(([input,key])=>document.getElementById(key).textContent=input.value);
+    }
+    studySelect.addEventListener('change',()=>selectStudy(studySelect.value));
+    document.querySelectorAll('.card-select').forEach(button=>button.addEventListener('click',()=>{selectStudy(button.dataset.id);document.getElementById('laboratory').scrollIntoView({behavior:'smooth'})}));
+    document.getElementById('case-prev').addEventListener('click',()=>{const i=archive.findIndex(item=>item.id===selectedId);selectStudy(archive[(i+archive.length-1)%archive.length].id)});
+    document.getElementById('case-next').addEventListener('click',()=>{const i=archive.findIndex(item=>item.id===selectedId);selectStudy(archive[(i+1)%archive.length].id)});
+    document.getElementById('view-angle').addEventListener('input',()=>updateConceptView(document.getElementById('view-angle').value));
+    document.getElementById('view-prev').addEventListener('click',()=>updateConceptView(conceptView-1));
+    document.getElementById('view-next').addEventListener('click',()=>updateConceptView(conceptView+1));
+    document.querySelectorAll('.filter').forEach(button=>button.addEventListener('click',()=>{document.querySelectorAll('.filter').forEach(b=>b.classList.toggle('active',b===button));document.querySelectorAll('.card').forEach(card=>{card.hidden=button.dataset.filter!=='all'&&card.dataset.group!==button.dataset.filter})}));
+    [[count,'count-value'],[influence,'influence-value'],[kill,'kill-value']].forEach(([input,id])=>input.addEventListener('input',()=>{document.getElementById(id).textContent=input.value;clearTimeout(sliderTimer);sliderTimer=setTimeout(reset,80)}));
+    speed.addEventListener('input',()=>document.getElementById('speed-value').textContent=speed.value);
+    document.getElementById('play-button').addEventListener('click',()=>{if(!state.running){reset();return}playing=!playing;update()});
+    document.getElementById('step-button').addEventListener('click',()=>{playing=false;const before=state.running;advanceStudy(state);activeHistory=-1;update();render();if(before&&!state.running)saveCurrent()});
+    document.getElementById('reset-button').addEventListener('click',reset);
+    document.getElementById('seed-button').addEventListener('click',()=>{seedInput.value=1+Math.floor(Math.random()*999999);reset()});
+    document.getElementById('apply-seed').addEventListener('click',reset);
+    document.getElementById('save-button').addEventListener('click',()=>{playing=false;update();saveCurrent()});
+    document.getElementById('history-list').addEventListener('click',event=>{const button=event.target.closest?.('button[data-history-index]');if(button)restoreHistory(Number(button.dataset.historyIndex))});
+    document.getElementById('metal-history-list').addEventListener('click',event=>{const button=event.target.closest?.('button[data-history-index]');if(button)restoreHistory(Number(button.dataset.historyIndex))});
+    document.getElementById('export-button').addEventListener('click',()=>{const link=document.createElement('a');link.href=canvas.toDataURL('image/png');link.download=`growth-atlas-${selectedId}-seed-${state.seed}.png`;document.body.appendChild(link);link.click();link.remove()});
+    document.getElementById('export-metal-button').addEventListener('click',()=>{const link=document.createElement('a');link.href=document.getElementById('case-image').src;link.download=`growth-atlas-concept-${selectedId}-${conceptViewNames[conceptView]}.jpg`;document.body.appendChild(link);link.click();link.remove()});
+    document.getElementById('site-header').addEventListener('click',event=>{if(!event.target.closest?.('a,button,select,input,summary'))window.scrollTo({top:0,behavior:'smooth'})});
+    function frame(time){if(!last)last=time;const dt=Math.min(100,time-last);last=time;if(playing&&state.running){accumulated+=dt;const interval=145/Number(speed.value);let steps=0;while(accumulated>=interval&&steps<6&&state.running){advanceStudy(state);accumulated-=interval;steps++}if(steps){update();render();if(!state.running)saveCurrent()}}requestAnimationFrame(frame)}
+    let toastTimer;function showToast(message){const toast=document.getElementById('status-toast');toast.textContent=message;toast.hidden=false;clearTimeout(toastTimer);toastTimer=setTimeout(()=>toast.hidden=true,2600)}
+    function syncThemeButton(){const toggle=document.getElementById('theme-toggle');toggle.dataset.theme=currentTheme;toggle.setAttribute('aria-pressed',String(currentTheme==='dark'));toggle.setAttribute('aria-label',currentTheme==='dark'?'切换到浅色主题':'切换到深色主题');toggle.title=toggle.getAttribute('aria-label')}
+    document.getElementById('theme-toggle').addEventListener('click',()=>{currentTheme=currentTheme==='light'?'dark':'light';document.documentElement.dataset.theme=currentTheme;drawingColors=graphPalettes[currentTheme];try{localStorage.setItem('growth-atlas-theme',currentTheme)}catch{}syncThemeButton();render()});
+    document.getElementById('export-concept-copy').addEventListener('click',()=>document.getElementById('export-metal-button').click());
+    document.querySelectorAll('.action-menu').forEach(menu=>{let timer;menu.addEventListener('pointerenter',event=>{if(event.pointerType==='mouse'){clearTimeout(timer);menu.open=true}});menu.addEventListener('pointerleave',event=>{if(event.pointerType==='mouse')timer=setTimeout(()=>menu.open=false,160)});menu.addEventListener('focusin',()=>clearTimeout(timer));menu.addEventListener('click',event=>{if(event.target.closest('button')){menu.open=false;menu.querySelector('summary').focus({preventScroll:true})}})});
+    document.addEventListener('click',event=>{document.querySelectorAll('.action-menu[open]').forEach(menu=>{if(!menu.contains(event.target))menu.open=false});const link=event.target.closest('a[href^="#ref-"]');if(link){const target=document.getElementById(link.getAttribute('href').slice(1));const detail=target?.querySelector('.reference-detail');if(detail)detail.open=true}});
+    document.addEventListener('keydown',event=>{if(event.key==='Escape')document.querySelectorAll('.action-menu[open]').forEach(menu=>{menu.open=false;menu.querySelector('summary').focus({preventScroll:true})})});
+    const conceptImage=document.getElementById('case-image');let dragStart=null;conceptImage.addEventListener('pointerdown',event=>{dragStart={x:event.clientX,view:conceptView};conceptImage.setPointerCapture(event.pointerId)});conceptImage.addEventListener('pointermove',event=>{if(dragStart)updateConceptView(dragStart.view+Math.round((event.clientX-dragStart.x)/85))});conceptImage.addEventListener('pointerup',()=>dragStart=null);conceptImage.addEventListener('pointercancel',()=>dragStart=null);conceptImage.addEventListener('error',()=>showToast('概念图暂不可用，请检查素材文件是否完整。'));
+    document.getElementById('save-button').addEventListener('click',()=>showToast('当前版本已保存至会话历史'));
+    syncThemeButton();selectStudy('colonization');
+    requestAnimationFrame(frame);
+  </script>
+  <script src="assets/product-ui.js"></script>
+</body>
+</html>
+
+

@@ -1,0 +1,34 @@
+[
+  {
+    "file": "NotoSansSC-Regular.woff2",
+    "sha256": "f5fd993e14d5de931c54046f056e157e360963c2baa931d08d92a0bf6952aa3f",
+    "source": "https://github.com/notofonts/noto-cjk/blob/main/Sans/SubsetOTF/SC/NotoSansSC-Regular.otf",
+    "sourceSHA256": "faa6c9df652116dde789d351359f3d7e5d2285a2b2a1f04a2d7244df706d5ea9",
+    "copyright": "© 2014-2021 Adobe (http://www.adobe.com/).",
+    "version": "Version 2.004;hotconv 1.0.118;makeotfexe 2.5.65603"
+  },
+  {
+    "file": "NotoSansSC-Bold.woff2",
+    "sha256": "853134eec4979f3d7c13366433d7d32fe3bb71d6a78506538e00db1c9ac416ee",
+    "source": "https://github.com/notofonts/noto-cjk/blob/main/Sans/SubsetOTF/SC/NotoSansSC-Bold.otf",
+    "sourceSHA256": "c6cb5a93abaa9edc8ee7463b7ebb7f42d618d40e6ed2f7a5371c97b0b64767c0",
+    "copyright": "© 2014-2021 Adobe (http://www.adobe.com/).",
+    "version": "Version 2.004;hotconv 1.0.118;makeotfexe 2.5.65603"
+  },
+  {
+    "file": "GenSenRounded-Regular.woff2",
+    "sha256": "13ee38e65b97153adb8c31981edf9759db5890ae7d78d01a01f713bd79f5b21f",
+    "source": "https://github.com/ButTaiwan/gensen-font/blob/master/otf/TW/GenSenRounded2TW-R.otf",
+    "sourceSHA256": "092285878f1d9441c790e5d6a98e806bd508602ad0a8a55511b6fb0a71a25fed",
+    "copyright": null,
+    "version": "Version 2.100;PS 2.1;hotconv 16.6.51;makeotf.lib2.5.65220 DEVELOPMENT"
+  },
+  {
+    "file": "GenSenRounded-Bold.woff2",
+    "sha256": "f2a505a3da9aa38298346e3c7d448efcdd0523efacff8c0e37500f85521b9662",
+    "source": "https://github.com/ButTaiwan/gensen-font/blob/master/otf/TW/GenSenRounded2TW-B.otf",
+    "sourceSHA256": "050f9ebf394faab3c0ba59092ae3e4b6686b349eadb3018d76d385c5829a1267",
+    "copyright": null,
+    "version": "Version 2.100;PS 2.1;hotconv 16.6.51;makeotf.lib2.5.65220 DEVELOPMENT"
+  }
+]
